@@ -136,6 +136,9 @@ Tablas principales:
 | `scoring_config` | Pesos y umbrales activos (este repo solo los **lee**) |
 | `feedback`, `learning_runs` | Aprendizaje supervisado (sin productor en este repo) |
 
+Diagrama base de datos:
+![Captura de pantalla diagrama base de datos](diagrama_database.pgerd.png)
+
 ---
 
 ## Ejecución de las tareas
