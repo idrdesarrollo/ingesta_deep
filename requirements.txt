@@ -1,0 +1,25 @@
+# Dependencias del robot de convocatorias (entorno virtual venv).
+# Sustituye a conda.yaml (Robocorp/rcc). Python >= 3.10.
+
+# ── HTTP / API BDNS ──────────────────────────────────────────────────────────
+requests==2.32.3
+
+# ── Base de datos (keywords/db.py sustituye a RPA.Database) ──────────────────
+psycopg2-binary==2.9.10
+pgvector==0.5.0               # solo scripts/backfill_embeddings.py
+python-dotenv==1.0.1          # carga .env (sustituye al vault de Robocorp)
+
+# ── Datos ────────────────────────────────────────────────────────────────────
+pandas==2.2.3
+
+# ── Embeddings BGE-M3 (keywords/embedder.py) ─────────────────────────────────
+# Versiones verificadas juntas en el entorno anterior. Subirlas solo tras
+# probar la carga del modelo (python -c "from keywords import embedder; embedder._get_model()").
+sentence-transformers==5.6.0
+transformers==5.13.1
+torch==2.13.0                 # build CPU basta para el robot (1 convocatoria por vez).
+                              # scripts/backfill_embeddings.py usa GPU: ver README.
+tokenizers==0.22.2
+huggingface_hub==1.23.0
+safetensors==0.8.0
+numpy==2.2.6
