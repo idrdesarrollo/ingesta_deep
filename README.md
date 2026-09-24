@@ -124,33 +124,6 @@ Todas las credenciales van por variables de entorno, cargadas desde `.env`
 ---
 
 ## Base de datos
-
-```powershell
-# Instalación limpia: esquema completo (estado final)
-psql -U postgres -d oceano_azul -f schema_init.sql
-```
-
-Si la base ya existe, aplicar las migraciones pendientes **en orden**
-(hacer antes un `pg_dump`):
-
-```powershell
-pg_dump -U postgres -d oceano_azul -F c -f backup_oceano_azul.dump
-
-psql -U postgres -d oceano_azul -f migrations/001_rename_v2_beneficiario_to_volumen.sql
-psql -U postgres -d oceano_azul -f migrations/002_rename_v6_competencia_to_cultura_gestion.sql
-psql -U postgres -d oceano_azul -f migrations/003_embedding_bge_m3_1024.sql
-psql -U postgres -d oceano_azul -f migrations/006_documentos_upsert.sql
-psql -U postgres -d oceano_azul -f migrations/007_historial_v9_desacoplado.sql
-psql -U postgres -d oceano_azul -f migrations/008_organos_id_bdns_nivel3.sql
-```
-
-`schema_init.sql` ya incluye 003, 006, 007 y 008. Tras aplicar la 008 en una
-base existente, rellenar el ID BDNS de los órganos antiguos:
-
-```powershell
-.venv\Scripts\python.exe scripts/backfill_id_bdns_nivel3.py   # idempotente
-```
-
 Tablas principales:
 
 | Tabla | Contenido |
