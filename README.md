@@ -136,10 +136,6 @@ Tablas principales:
 | `scoring_config` | Pesos y umbrales activos (este repo solo los **lee**) |
 | `feedback`, `learning_runs` | Aprendizaje supervisado (sin productor en este repo) |
 
-Convención de migraciones: `migrations/NNN_descripcion.sql`, con cabecera,
-`BEGIN;`…`COMMIT;` y un bloque `DO $$` de verificación. Si se añade una,
-actualizar también `schema_init.sql`.
-
 ---
 
 ## Ejecución de las tareas
